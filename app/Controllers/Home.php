@@ -8,9 +8,4 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
-
-    public function index22(): string
-    {
-        return view('welcome_message');
-    }
 }

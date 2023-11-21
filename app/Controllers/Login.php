@@ -22,11 +22,11 @@ class Login extends BaseController
             );
             session()->set($data);
 
-            return redirect()->to('/home');
+            return redirect()->to('/panel');
         }
         else
         {
-            return redirect()->to('/home');
+            return redirect()->to('/panel');
         }
     }
 }

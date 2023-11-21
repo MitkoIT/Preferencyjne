@@ -10,3 +10,5 @@ $routes->setDefaultController('Login');
 $routes->setDefaultMethod('index');
 $routes->get('/', 'Login::index', ['filter' => 'NoAuth']);
 $routes->get('/home', 'Home::index',['filter' => 'UserAuth']);
+
+$routes->get('/panel', 'PanelController::index');

@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Numer wyrobu</th>
+      <th scope="col">Czas dodania</th>
       <th scope="col">Zółta karta</th>
     </tr>
   </thead>
@@ -21,6 +22,14 @@
       </th>
       <td>
         <a href="<?php echo base_url(); ?>show/<?php echo $row->id_zlecenie; ?>"><?php echo explode("M",$row->numer)[0]; ?></a>
+      </td>
+      <td>
+
+        <?php
+        $date = new DateTime($row->czas_dodania);
+        echo $date->format('Y-m-d H:i:s');
+        ?>
+
       </td>
       <td>
         <?php 

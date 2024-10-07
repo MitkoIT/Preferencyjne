@@ -50,7 +50,7 @@ class Home extends BaseController
 
         //get ofe_oferta_element_skladowe from orfeusz by numer sprawy (nr)
 
-        $query = $db->table('ofe_oferta_element_skladowe')->select('ofe_oferta_element_skladowe.*,rec_skladnik.nazwa')->join('ofe_oferta','ofe_oferta.id_oferta = ofe_oferta_element_skladowe.id_oferta')->join('rec_skladnik','rec_skladnik.id = ofe_oferta_element_skladowe.id_skladnik')->where('ofe_oferta.numer_historyczny',$nr)->get();
+        $query = $db->table('ofe_oferta_element_skladowe')->select('ofe_oferta_element_skladowe.*,rec_skladnik.nazwa, rec_skladnik.typ')->join('ofe_oferta','ofe_oferta.id_oferta = ofe_oferta_element_skladowe.id_oferta')->join('rec_skladnik','rec_skladnik.id = ofe_oferta_element_skladowe.id_skladnik')->where('ofe_oferta.numer_historyczny',$nr)->get();
         $skladowe = $query->getResult();
 
         //get all preferential skladniki
@@ -61,10 +61,13 @@ class Home extends BaseController
             $pref[] = $row->id_skladnik;
         }
 
+        $id_user = session()->get('id_user');
+
         $data_show = [
             'skladowe' => $skladowe,
             'nr' => $nr,
             'pref' => $pref,
+            'id_user' => $id_user,
         ];
 
         echo view('templates/header');

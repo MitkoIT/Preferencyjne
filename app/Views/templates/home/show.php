@@ -24,7 +24,27 @@ if(!empty($skladowe))
                 <?php echo $row->id_skladnik; ?>
             </th>
             <td>
-                <?php echo '['.$row->kod.']'.' '.$row->nazwa; ?>
+                <?php 
+                if($row->typ == 'produkt') {
+
+                    //link do produktów w recepturach
+                    ?>
+                   <a href="http://10.0.0.32/receptury?idu=<?php echo $id_user; ?>&idapps=133&redirect=produkty/pokaz/<?php echo $row->id_skladnik; ?>" target="_blank"> <?php echo '['.$row->kod.']'.' '.$row->nazwa.' ['.$row->typ.']'; ?></a>
+                   <?php
+
+                }elseif($row->typ == 'polprodukt'){
+                    //link do polproduktów w recepturach
+                    ?>
+                    <a href="http://10.0.0.32/receptury?idu=<?php echo $id_user; ?>&idapps=133&redirect=polprodukty/pokaz/<?php echo $row->id_skladnik; ?>" target="_blank"> <?php echo '['.$row->kod.']'.' '.$row->nazwa.' ['.$row->typ.']'; ?></a>
+                    <?php
+
+                } else {
+                    ?>
+                       <?php echo '['.$row->kod.']'.' '.$row->nazwa.' ['.$row->typ.']'; ?>
+                    <?php
+                }
+                ?>
+            
             </td>
             <td>
                 <?php
